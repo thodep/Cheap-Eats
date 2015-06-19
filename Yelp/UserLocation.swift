@@ -1,10 +1,5 @@
-//
-//  UserLocation.swift
-//  Yelp
-//
-//  Created by Jerry Su on 9/22/14.
-//  Copyright (c) 2014 Jerry Su. All rights reserved.
-//
+
+
 
 import CoreLocation
 
@@ -35,7 +30,7 @@ class UserLocation: NSObject, CLLocationManagerDelegate {
         }
 
         func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-            let location = locations.last as CLLocation
+            let location = locations.last as! CLLocation
             if location.horizontalAccuracy > 0 {
                 self.latitude = location.coordinate.latitude
                 self.longitude = location.coordinate.longitude
@@ -72,13 +67,13 @@ class UserLocation: NSObject, CLLocationManagerDelegate {
 
     var latitude: Double {
         get {
-            return manager.latitude ?? 37.7710347
+            return manager.latitude ?? 43.64286195
         }
     }
 
     var longitude: Double {
         get {
-            return manager.longitude ?? -122.4040795
+            return manager.longitude ?? -79.4576777
         }
     }
 

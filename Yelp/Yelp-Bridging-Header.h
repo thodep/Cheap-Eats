@@ -7,3 +7,4 @@
 #import <NSDictionary+BDBOAuth1Manager.h>
 #import <UIImageView+AFNetworking.h>
 #import <UIScrollView+SVInfiniteScrolling.h>
+#import "UIImageView+WebCache.h"

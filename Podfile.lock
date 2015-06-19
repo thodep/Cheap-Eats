@@ -1,38 +1,43 @@
 PODS:
-  - AFNetworking (2.4.1):
+  - AFNetworking (2.5.4):
+    - AFNetworking/NSURLConnection (= 2.5.4)
+    - AFNetworking/NSURLSession (= 2.5.4)
+    - AFNetworking/Reachability (= 2.5.4)
+    - AFNetworking/Security (= 2.5.4)
+    - AFNetworking/Serialization (= 2.5.4)
+    - AFNetworking/UIKit (= 2.5.4)
+  - AFNetworking/NSURLConnection (2.5.4):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.5.4):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.5.4)
+  - AFNetworking/Security (2.5.4)
+  - AFNetworking/Serialization (2.5.4)
+  - AFNetworking/UIKit (2.5.4):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-    - AFNetworking/UIKit
-  - AFNetworking/NSURLConnection (2.4.1):
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.4.1):
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-  - AFNetworking/Reachability (2.4.1)
-  - AFNetworking/Security (2.4.1)
-  - AFNetworking/Serialization (2.4.1)
-  - AFNetworking/UIKit (2.4.1):
-    - AFNetworking/NSURLConnection
-    - AFNetworking/NSURLSession
-  - BDBOAuth1Manager (1.4.0):
-    - AFNetworking/NSURLConnection (~> 2.4.0)
-    - AFNetworking/NSURLSession (~> 2.4.0)
+  - BDBOAuth1Manager (1.5.0):
+    - AFNetworking/NSURLConnection (~> 2.5.0)
+    - AFNetworking/NSURLSession (~> 2.5.0)
+  - SDWebImage (3.7.2):
+    - SDWebImage/Core (= 3.7.2)
+  - SDWebImage/Core (3.7.2)
   - SVPullToRefresh (HEAD based on 0.4.1)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.4)
   - BDBOAuth1Manager
+  - SDWebImage
   - SVPullToRefresh (HEAD)
 
 SPEC CHECKSUMS:
-  AFNetworking: 0aabc6fae66d6e5d039eeb21c315843c7aae51ab
-  BDBOAuth1Manager: 4f0967110286edd4c7961cf48a4eb242c64137a1
-  SVPullToRefresh: d5161ebc833a38b465364412e5e307ca80bbb190
+  AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
+  BDBOAuth1Manager: 2e28773b58f880fb36b5cd3efcf0b1fefbc78a99
+  SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
+  SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
 
-COCOAPODS: 0.34.4
+COCOAPODS: 0.37.1

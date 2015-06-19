@@ -4,4 +4,5 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 pod 'AFNetworking', '~> 2.4'
 pod 'BDBOAuth1Manager'
+pod 'SDWebImage'
 pod 'SVPullToRefresh', :head

@@ -2,78 +2,56 @@
 //  DetailsViewController.swift
 //  Yelp
 //
-//  Created by Jerry Su on 9/23/14.
-//  Copyright (c) 2014 Jerry Su. All rights reserved.
+//  Created by tho dang on 2015-06-17.
+//  Copyright (c) 2015 Jerry Su. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import MapKit
 
-class DetailsViewController: UIViewController, MKMapViewDelegate {
-
-    var business: YelpBusiness!
-
-    @IBOutlet weak var previewImage: UIImageView!
+class DetailsViewController: UIViewController,MKMapViewDelegate {
+    @IBOutlet weak var restaurantImage: UIImageView!
+    
+    @IBOutlet weak var restaurantNameLabel: UILabel!
+    
     @IBOutlet weak var ratingImage: UIImageView!
-    @IBOutlet weak var reviewLabel: UILabel!
-    @IBOutlet weak var addressLabel: UILabel!
-    @IBOutlet weak var categoriesLabel: UILabel!
-    @IBOutlet weak var distanceLabel: UILabel!
-    @IBOutlet weak var dealsImage: UIImageView!
+    
+    @IBOutlet weak var restaurantRating: UILabel!
+    
+    @IBOutlet weak var restaurantCategories: UILabel!
+    
+    @IBOutlet weak var openOrCloseLabel: UILabel!
+    
     @IBOutlet weak var mapView: MKMapView!
-
-    var userLocation: UserLocation = UserLocation()
+    
+    @IBOutlet weak var restaurantAddress: UILabel!
+    
+    @IBOutlet weak var callButton: UIButton!
+    
+    @IBOutlet weak var directionButton: UIButton!
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationItem.title = business.name
-
-        if (self.business.imageURL? != nil) {
-            self.previewImage.setImageWithURL(self.business.imageURL)
-        }
-
-        self.previewImage.layer.cornerRadius = 9.0
-        self.previewImage.layer.masksToBounds = true
-
-        self.ratingImage.setImageWithURL(self.business.ratingImageURL)
-
-        let reviewCount = self.business.reviewCount
-        if (reviewCount == 1) {
-            self.reviewLabel.text = "\(reviewCount) review"
-        } else {
-            self.reviewLabel.text = "\(reviewCount) reviews"
-        }
-
-        self.addressLabel.text = self.business.displayAddress
-        self.categoriesLabel.text = self.business.displayCategories
-
-        let distance = self.business.location.distanceFromLocation(self.userLocation.location)
-        self.distanceLabel.text = String(format: "%.1f mi", distance / 1609.344)
-        self.distanceLabel.sizeToFit()
-
-        self.dealsImage.hidden = self.business.deals == nil
-
-        self.mapView.delegate = self
-        let annotation = MKPointAnnotation()
-        let coordinate = CLLocationCoordinate2D(latitude: self.business.latitude!, longitude: self.business.longitude!)
-        annotation.setCoordinate(coordinate)
-        self.mapView.addAnnotation(annotation)
-        self.mapView.setRegion(MKCoordinateRegion(center: coordinate, span: MKCoordinateSpanMake(0.01, 0.01)), animated: false)
-        self.mapView.layer.cornerRadius = 9.0
-        self.mapView.layer.masksToBounds = true
+        // Do any additional setup after loading the view.
     }
 
-    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
-        if !(annotation is MKPointAnnotation) {
-            return nil
-        }
-
-        var view = mapView.dequeueReusableAnnotationViewWithIdentifier("pin") as? MKPinAnnotationView
-        if view == nil {
-            view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "pin")
-            view!.canShowCallout = false
-        }
-        return view
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
+    
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
 }

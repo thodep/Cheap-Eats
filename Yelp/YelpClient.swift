@@ -1,10 +1,5 @@
-//
-//  YelpClient.swift
-//  Yelp
-//
-//  Created by Jerry Su on 9/19/14.
-//  Copyright (c) 2014 Jerry Su. All rights reserved.
-//
+
+
 
 class YelpClient: BDBOAuth1RequestOperationManager {
 
@@ -20,21 +15,63 @@ class YelpClient: BDBOAuth1RequestOperationManager {
         self.accessSecret = accessSecret
         var baseUrl = NSURL(string: "http://api.yelp.com/v2/")
         super.init(baseURL: baseUrl, consumerKey: key, consumerSecret: secret);
-        
-        var token = BDBOAuthToken(token: accessToken, secret: accessSecret, expiration: nil)
-        self.requestSerializer.saveAccessToken(token)
+        var credential = BDBOAuth1Credential(token: accessToken, secret: accessSecret, expiration: nil)
+
+        self.requestSerializer.saveAccessToken(credential)
     }
     
-    func searchWithTerm(term: String, parameters: Dictionary<String, String>? = nil, offset: Int = 0, limit: Int = 20, success: (AFHTTPRequestOperation!, AnyObject!) -> Void, failure: (AFHTTPRequestOperation!, NSError!) -> Void) -> AFHTTPRequestOperation! {
-        var params: NSMutableDictionary = [
-            "term": term,
-            "offset": offset,
-            "limit": limit
-        ]
-        for (key, value) in parameters! {
-            params.setValue(value, forKey: key)
-        }
-        return self.GET("search", parameters: params, success: success, failure: failure)
+    func searchWithTerm(term: String,
+                    parameters: Dictionary<String, String>? = nil,
+                    offset: Int = 0,
+                    limit: Int = 20,
+                    success: ([Resturant]?) -> Void,
+                    failure: (AFHTTPRequestOperation!, NSError!) -> Void) -> AFHTTPRequestOperation! {
+        
+                        var params: NSMutableDictionary = [
+                            "term": term,
+                            "offset": offset,
+                            "limit": limit
+                        ]
+                        for (key, value) in parameters! {
+                            params.setValue(value, forKey: key)
+                        }
+                        return self.GET("http://api.yelp.com/v2/search", parameters: params, success: { (operation:AFHTTPRequestOperation!, object:AnyObject!) -> Void in
+                            if let json = object as? Dictionary<String, AnyObject>,
+                                let businesses = json["businesses"] as? Array<Dictionary<String, AnyObject>>{
+                                    
+                                    var resultArray: Array<Resturant> = Array()
+                                    for dict in businesses {
+                                        let resturant = Resturant()
+                                       
+                                        if let ratingImageUrl = dict["rating_img_url"] as? String{
+                                            resturant.ratingImageUrl = ratingImageUrl
+                                        }
+                                        
+                                        if let imageUrl = dict["image_url"] as? String{
+                                            resturant.imageUrl = imageUrl
+                                        }
+                                        
+                                        if let resName = dict["name"] as? String{
+                                            resturant.name = resName
+                                        }
+                                        
+                                       if let location = dict["location"] as? Dictionary<String, AnyObject>,
+                                         let displayAddress = location["display_address"] as? Array<String>{
+                                          if count(displayAddress) > 0{
+                                            resturant.address = displayAddress[0]
+                                            
+
+                                          }
+                                     }
+                                        if let category = dict["categories"] as? String {
+                                            resturant.categories = category
+                                        }
+                                    
+                                        resultArray.append(resturant)
+                                    }
+                                    success(resultArray)
+                                }
+                            }, failure: failure)
     }
     
 }
