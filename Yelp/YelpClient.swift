@@ -64,17 +64,15 @@ class YelpClient: BDBOAuth1RequestOperationManager {
                                                 }
                                             }
                                         }
-                                       // if let category = dict["categories"] as? String {
-                                            
-                                          //  resturant.categories = category
-                                        
-                                        //}
-                                        
+                                     
                                         if let category = dict["categories"] as? Array<Array<String>> {
                                             resturant.categories = ", ".join(category.map({ $0[0] }))
                                         }
 
-                                        
+                                        if let resPhone = dict["display_phone"] as? String {
+                                            resturant.phoneNumber = resPhone
+                                            
+                                        }
                                         resultArray.append(resturant)
                                     }
                                     success(resultArray)

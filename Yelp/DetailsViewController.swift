@@ -1,10 +1,4 @@
-//
-//  DetailsViewController.swift
-//  Yelp
-//
-//  Created by tho dang on 2015-06-17.
-//  Copyright (c) 2015 Jerry Su. All rights reserved.
-//
+
 
 import UIKit
 import MapKit
@@ -20,11 +14,12 @@ class DetailsViewController: UIViewController,MKMapViewDelegate {
     
     @IBOutlet weak var restaurantCategories: UILabel!
     
-    @IBOutlet weak var openOrCloseLabel: UILabel!
-    
     @IBOutlet weak var mapView: MKMapView!
     
     @IBOutlet weak var restaurantAddress: UILabel!
+    
+    @IBOutlet weak var phoneNumber: UILabel!
+    
     
     @IBOutlet weak var callButton: UIButton!
     
@@ -41,6 +36,7 @@ class DetailsViewController: UIViewController,MKMapViewDelegate {
     var urlDataObject:String = ""
     var urlRatingImage:String = ""
     
+    var restaurantPhoneNumber: String = ""
     
 
     override func viewDidLoad() {
@@ -50,10 +46,12 @@ class DetailsViewController: UIViewController,MKMapViewDelegate {
         restaurantNameLabel.text = restaurantLabel
         restaurantAddress.text = restaurantAddressString
         restaurantCategories.text = restaurantCategoriesDetail
+        phoneNumber.text = restaurantPhoneNumber
+        
         
         restaurantImage.image = myImageObject(urlDataObject)
         ratingImage.image = myImageObject(urlRatingImage)
-        
+       
 
     }
     

@@ -1,9 +1,4 @@
-//
-//  MapViewController.swift
-//  Yelp
-//
-//  Created by tho dang on 2015-06-21.
-//  Copyright (c) 2015 Jerry Su. All rights reserved.
+
 //
 
 import UIKit
@@ -14,7 +9,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     @IBOutlet weak var mapView: MKMapView!
     var locationManager = CLLocationManager()
-    
+    var center: CLLocationCoordinate2D!
+    var annotations: Array<MKPointAnnotation>!
     
    override func  viewDidLoad() {
     super.viewDidLoad()
@@ -31,7 +27,14 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         self.mapView.showsUserLocation = true
       
         mapView.setUserTrackingMode(MKUserTrackingMode.Follow, animated: true)
+        
+        
+        
+        
     }
+
+
+
     
 //    func displayLocation(location:CLLocation){
 //        

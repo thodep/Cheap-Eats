@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="kc5-vV-pmY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kc5-vV-pmY">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -52,7 +52,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Distance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kiU-5Y-PL3">
                                             <rect key="frame" x="495" y="0.0" width="45" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -65,7 +65,7 @@
                                     <outlet property="restaurantName" destination="Q8C-Oo-Wet" id="Ihh-z3-Fro"/>
                                     <outlet property="restaurantRating" destination="riO-BB-z4Z" id="As5-cu-ZL3"/>
                                     <outlet property="restaurantRatingImage" destination="xh6-cZ-Vgy" id="1mK-yy-Jix"/>
-                                    <segue destination="5l0-Di-YDn" kind="push" identifier="detailView" id="fi5-XF-qkp"/>
+                                    <segue destination="5l0-Di-YDn" kind="show" identifier="detailView" id="fi5-XF-qkp"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -78,7 +78,7 @@
                         <barButtonItem key="leftBarButtonItem" title="Reveal " id="3ef-Ll-Uug"/>
                         <barButtonItem key="rightBarButtonItem" image="Map" id="z8b-wd-CHI">
                             <connections>
-                                <segue destination="22f-lf-n6f" kind="modal" id="T3A-bt-PJ2"/>
+                                <segue destination="22f-lf-n6f" kind="presentation" id="T3A-bt-PJ2"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -87,7 +87,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YQk-bR-9cI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="842" y="-134"/>
+            <point key="canvasLocation" x="1578.75" y="-141.54929577464787"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="MEk-XC-Eba">
@@ -98,7 +98,7 @@
                         <viewControllerLayoutGuide type="bottom" id="UqH-7y-Yr2"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="0aO-Ru-80L" customClass="Map">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bQZ-4m-wF4">
@@ -110,7 +110,7 @@
                     <navigationItem key="navigationItem" id="GDS-EP-kcN">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="uWN-xd-zdI">
                             <connections>
-                                <segue destination="X9y-ik-aGc" kind="push" id="mJq-uB-E0p"/>
+                                <segue destination="X9y-ik-aGc" kind="show" id="mJq-uB-E0p"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -120,7 +120,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rcb-eY-hF5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2171" y="-552"/>
+            <point key="canvasLocation" x="4070.625" y="-583.09859154929575"/>
         </scene>
         <!--Details View Controller-->
         <scene sceneID="Lqf-bR-eSl">
@@ -134,31 +134,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wMJ-vD-eei">
-                                <rect key="frame" x="26" y="85" width="112" height="128"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wMJ-vD-eei">
+                                <rect key="frame" x="26" y="85" width="112" height="102"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="1jl-sJ-CJd"/>
                                     <constraint firstAttribute="width" constant="112" id="69w-Ba-64X"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LFb-Xx-g4k">
-                                <rect key="frame" x="282" y="502" width="30" height="30"/>
-                                <state key="normal" title="Call">
-                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lSl-To-68H">
-                                <rect key="frame" x="21" y="562" width="553" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="68p-tb-I4J"/>
-                                </constraints>
-                                <state key="normal" title="Direction">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lSl-To-68H">
+                                <rect key="frame" x="28" y="557" width="202" height="35"/>
+                                <state key="normal" backgroundImage="button-4">
                                     <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Restaurant Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G2A-nJ-8z5">
                                 <rect key="frame" x="141" y="78" width="154" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -171,16 +162,7 @@
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Categories" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dIc-2F-gma">
                                 <rect key="frame" x="141" y="130" width="84" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Open" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w82-TQ-9Jq">
-                                <rect key="frame" x="141" y="159" width="42" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="0eq-83-2fH"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -190,22 +172,40 @@
                                     <constraint firstAttribute="height" constant="250" id="Scl-ak-dbI"/>
                                 </constraints>
                             </mapView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Distance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e3u-O1-Svz">
-                                <rect key="frame" x="500" y="81" width="67" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Rating" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="47i-uo-Zkm">
                                 <rect key="frame" x="238" y="-3" width="50" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" ambiguous="YES" misplaced="YES" text="Restaurant Address" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A8H-TB-d5n">
-                                <rect key="frame" x="23" y="460" width="558" height="47"/>
+                                <rect key="frame" x="26" y="459" width="548" height="47"/>
                                 <color key="backgroundColor" red="0.43529411764705883" green="0.44313725490196076" blue="0.47450980392156861" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Phone:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FRE-aL-ifB">
+                                <rect key="frame" x="141" y="159" width="48" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uGi-sP-rvb">
+                                <rect key="frame" x="188" y="159" width="113" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LFb-Xx-g4k">
+                                <rect key="frame" x="28" y="520" width="202" height="35"/>
+                                <state key="normal" backgroundImage="button-2">
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Distance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e3u-O1-Svz">
+                                <rect key="frame" x="385" y="107" width="67" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -213,23 +213,18 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="wMJ-vD-eei" firstAttribute="leading" secondItem="c7I-dp-QgO" secondAttribute="leading" id="11n-3A-PY6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="c7I-dp-QgO" secondAttribute="trailing" constant="5" id="1pI-vr-Ruy"/>
                             <constraint firstItem="A8H-TB-d5n" firstAttribute="top" secondItem="c7I-dp-QgO" secondAttribute="bottom" constant="28" id="GMh-Oa-B2b"/>
                             <constraint firstItem="wMJ-vD-eei" firstAttribute="leading" secondItem="awE-cU-cuN" secondAttribute="leadingMargin" constant="10" id="HCe-0B-cDA"/>
-                            <constraint firstItem="lSl-To-68H" firstAttribute="leading" secondItem="awE-cU-cuN" secondAttribute="leadingMargin" constant="5" id="I8D-wG-45P"/>
-                            <constraint firstItem="w82-TQ-9Jq" firstAttribute="leading" secondItem="wyp-Wf-TbS" secondAttribute="leading" id="K2L-aD-MN5"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="lSl-To-68H" secondAttribute="trailing" constant="10" id="LCh-M2-cUb"/>
-                            <constraint firstItem="lSl-To-68H" firstAttribute="centerX" secondItem="LFb-Xx-g4k" secondAttribute="centerX" id="M07-Ed-aXD"/>
+                            <constraint firstItem="A8H-TB-d5n" firstAttribute="leading" secondItem="awE-cU-cuN" secondAttribute="leadingMargin" constant="5" id="HGA-4p-5aa"/>
+                            <constraint firstItem="A8H-TB-d5n" firstAttribute="leading" secondItem="awE-cU-cuN" secondAttribute="leadingMargin" constant="7" id="L8q-Qw-jds"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="A8H-TB-d5n" secondAttribute="trailing" constant="3" id="LkR-ij-ywh"/>
                             <constraint firstItem="wyp-Wf-TbS" firstAttribute="centerY" secondItem="47i-uo-Zkm" secondAttribute="centerY" id="Q4p-Ls-P7T"/>
-                            <constraint firstItem="w82-TQ-9Jq" firstAttribute="leading" secondItem="wMJ-vD-eei" secondAttribute="trailing" constant="3" id="VMz-pS-axa"/>
-                            <constraint firstItem="lSl-To-68H" firstAttribute="top" secondItem="LFb-Xx-g4k" secondAttribute="bottom" constant="30" id="WQS-0t-5pn"/>
                             <constraint firstItem="wMJ-vD-eei" firstAttribute="top" secondItem="YsY-Fi-1fg" secondAttribute="bottom" constant="21" id="XQq-iS-u1w"/>
+                            <constraint firstItem="c7I-dp-QgO" firstAttribute="leading" secondItem="awE-cU-cuN" secondAttribute="leadingMargin" constant="10" id="bTP-al-xWW"/>
                             <constraint firstItem="47i-uo-Zkm" firstAttribute="leading" secondItem="wyp-Wf-TbS" secondAttribute="trailing" constant="8" symbolic="YES" id="dWb-2i-K2O"/>
-                            <constraint firstItem="w82-TQ-9Jq" firstAttribute="leading" secondItem="dIc-2F-gma" secondAttribute="leading" id="lgY-TW-eHf"/>
                             <constraint firstItem="dIc-2F-gma" firstAttribute="top" secondItem="wyp-Wf-TbS" secondAttribute="bottom" constant="5" id="lgb-Ka-lkB"/>
-                            <constraint firstItem="w82-TQ-9Jq" firstAttribute="leading" secondItem="G2A-nJ-8z5" secondAttribute="leading" id="omL-eW-P3B"/>
                             <constraint firstItem="wyp-Wf-TbS" firstAttribute="top" secondItem="G2A-nJ-8z5" secondAttribute="bottom" constant="8" symbolic="YES" id="sV5-em-d8k"/>
-                            <constraint firstItem="fgl-Y7-Nyt" firstAttribute="top" secondItem="lSl-To-68H" secondAttribute="bottom" constant="8" symbolic="YES" id="sof-BB-6vT"/>
-                            <constraint firstItem="w82-TQ-9Jq" firstAttribute="top" secondItem="dIc-2F-gma" secondAttribute="bottom" constant="8" symbolic="YES" id="tXz-ey-A2w"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="seM-A5-hEe"/>
@@ -237,7 +232,7 @@
                         <outlet property="callButton" destination="LFb-Xx-g4k" id="gt3-Ut-rte"/>
                         <outlet property="directionButton" destination="lSl-To-68H" id="aEn-La-AMk"/>
                         <outlet property="mapView" destination="c7I-dp-QgO" id="LIv-XP-7tM"/>
-                        <outlet property="openOrCloseLabel" destination="w82-TQ-9Jq" id="es6-Mc-zqg"/>
+                        <outlet property="phoneNumber" destination="uGi-sP-rvb" id="TBb-vc-KXS"/>
                         <outlet property="ratingImage" destination="wyp-Wf-TbS" id="8wl-Fu-M8z"/>
                         <outlet property="resDistance" destination="e3u-O1-Svz" id="HcH-Hb-FQ5"/>
                         <outlet property="restaurantAddress" destination="A8H-TB-d5n" id="U7u-dQ-2kx"/>
@@ -249,7 +244,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WpG-gr-qVs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1839" y="463"/>
+            <point key="canvasLocation" x="3464" y="543"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="spi-xs-2a9">
@@ -267,7 +262,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kAq-Jg-yH0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="123" y="-134"/>
+            <point key="canvasLocation" x="230.625" y="-141.54929577464787"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="x4H-AF-yK6">
@@ -285,17 +280,14 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DKR-0R-jSv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1634" y="-552"/>
+            <point key="canvasLocation" x="3063.75" y="-583.09859154929575"/>
         </scene>
     </scenes>
     <resources>
         <image name="Map" width="24" height="24"/>
+        <image name="button-2" width="434" height="55"/>
+        <image name="button-4" width="270" height="44"/>
     </resources>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="mJq-uB-E0p"/>
     </inferredMetricsTieBreakers>

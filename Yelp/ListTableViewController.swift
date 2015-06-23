@@ -84,16 +84,16 @@ class ListTableViewController: UITableViewController,UITableViewDataSource,UITab
         }
     }
 
-    
+    // animation for cell
 //    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
 //       
-//        let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, -500, 10, 0)
-//        cell.layer.transform = rotationTransform
+//       let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, -500, 10, 0)
+//       cell.layer.transform = rotationTransform
 //        UIView.animateWithDuration(0.8, animations: { () -> Void in
-//           cell.layer.transform = CATransform3DIdentity
+//          cell.layer.transform = CATransform3DIdentity
 //            
 //    })
-//    }
+//  }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! RestaurantListTableViewCell
