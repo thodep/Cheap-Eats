@@ -1,5 +1,7 @@
 
 
+// Create usercoordinates CLLLocation 
+
 
 class YelpClient: BDBOAuth1RequestOperationManager {
 
@@ -55,23 +57,28 @@ class YelpClient: BDBOAuth1RequestOperationManager {
                                             resturant.name = resName
                                         }
                                         
-                                       if let location = dict["location"] as? Dictionary<String, AnyObject>,
-                                         let displayAddress = location["display_address"] as? Array<String>{
-                                          if count(displayAddress) > 0{
-                                            resturant.address = displayAddress[0]
-                                            
-
-                                          }
-                                     }
-                                        if let category = dict["categories"] as? String {
-                                            resturant.categories = category
+                                        if let location = dict["location"] as? NSDictionary {
+                                            if let address = location["address"] as? Array<String> {
+                                                if let neighborhoods = location["neighborhoods"] as? Array<String> {
+                                                    resturant.address = ", ".join(address + [neighborhoods[0]])
+                                                }
+                                            }
                                         }
-                                    
+                                       // if let category = dict["categories"] as? String {
+                                            
+                                          //  resturant.categories = category
+                                        
+                                        //}
+                                        
+                                        if let category = dict["categories"] as? Array<Array<String>> {
+                                            resturant.categories = ", ".join(category.map({ $0[0] }))
+                                        }
+
+                                        
                                         resultArray.append(resturant)
                                     }
                                     success(resultArray)
                                 }
                             }, failure: failure)
     }
-    
 }

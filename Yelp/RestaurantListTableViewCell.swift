@@ -17,5 +17,6 @@ class RestaurantListTableViewCell: UITableViewCell {
     
     @IBOutlet weak var restaurantCategory: UILabel!
  
+    @IBOutlet weak var restaurantDistance: UILabel!
 
 }

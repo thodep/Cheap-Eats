@@ -9,6 +9,7 @@ class ListTableViewController: UITableViewController,UITableViewDataSource,UITab
     let kToken = "Su398qprNpeQBDuvsQmx1B4KpXZv0mJm"
     let kTokenSecret = "cjkq8UquMprYC6l5C1qN9zB5QOw"
     var resturants: [Resturant]?
+    var restaurantName:String = ""
     
     func seachForRestaurants() {
         var parameters = [
@@ -28,11 +29,17 @@ class ListTableViewController: UITableViewController,UITableViewDataSource,UITab
             if let rests = results {
                 self.resturants = rests
                 self.tableView.reloadData()
+                
             }
-            }) { (operation: AFHTTPRequestOperation!,error: NSError!) -> Void in
+            })
+            { (operation: AFHTTPRequestOperation!,error: NSError!) -> Void in
             
         }
     }
+    
+
+  
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,9 +52,7 @@ class ListTableViewController: UITableViewController,UITableViewDataSource,UITab
         tableView.delegate = self
         tableView.dataSource = self
         
-        
     }
-
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
@@ -62,20 +67,56 @@ class ListTableViewController: UITableViewController,UITableViewDataSource,UITab
         }
         return 0
     }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if(segue.identifier == "detailView") {
+            // data to pass values too.
+            var detailView = segue.destinationViewController as! DetailsViewController
+            // access data from DetailViewController
+            let selectedRow = self.tableView.indexPathForSelectedRow()?.row
+            if let rests = self.resturants {
+                detailView.restaurantLabel = rests[selectedRow!].name
+                detailView.restaurantAddressString = rests[selectedRow!].address
+                detailView.urlDataObject = rests[selectedRow!].imageUrl
+                detailView.urlRatingImage = rests[selectedRow!].ratingImageUrl
+                detailView.restaurantCategoriesDetail = rests[selectedRow!].categories
+          }
+        }
+    }
+
+    
+//    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+//       
+//        let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, -500, 10, 0)
+//        cell.layer.transform = rotationTransform
+//        UIView.animateWithDuration(0.8, animations: { () -> Void in
+//           cell.layer.transform = CATransform3DIdentity
+//            
+//    })
+//    }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! RestaurantListTableViewCell
         if let rests = self.resturants{
             let rest = rests[indexPath.row];
-            cell.restaurantImage.sd_setImageWithURL(NSURL(string: rest.imageUrl))
+            print(rest)
+            
             cell.restaurantName.text = rest.name
-            cell.restaurantRatingImage.sd_setImageWithURL(NSURL(string: rest.ratingImageUrl))
             cell.restaurantAddress.text = rest.address
             cell.restaurantCategory.text = rest.categories
+            
+            cell.restaurantImage.sd_setImageWithURL(NSURL(string: rest.imageUrl))
+            cell.restaurantRatingImage.sd_setImageWithURL(NSURL(string: rest.ratingImageUrl))
+            
+            
             
         }
         // Configure the cell...
 
         return cell
     }
+    
+
+    
+    
 }

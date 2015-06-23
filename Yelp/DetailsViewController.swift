@@ -30,14 +30,40 @@ class DetailsViewController: UIViewController,MKMapViewDelegate {
     
     @IBOutlet weak var directionButton: UIButton!
     
+    @IBOutlet weak var resDistance: UILabel!
+    
+    var restaurantLabel:String = ""
+    var restaurantAddressString: String = ""
+    var restaurantImageString:String = ""
+    var restaurantImageDetail:UIImageView?
+    var restaurantRatingImageDetail:UIImageView?
+    var restaurantCategoriesDetail: String = ""
+    var urlDataObject:String = ""
+    var urlRatingImage:String = ""
+    
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-    }
+        restaurantNameLabel.text = restaurantLabel
+        restaurantAddress.text = restaurantAddressString
+        restaurantCategories.text = restaurantCategoriesDetail
+        
+        restaurantImage.image = myImageObject(urlDataObject)
+        ratingImage.image = myImageObject(urlRatingImage)
+        
 
+    }
+    
+    func myImageObject(url:NSString) -> UIImage {
+        let url = NSURL(string: url as String)
+        let data = NSData(contentsOfURL: url!)
+        var image = UIImage(data: data!)
+        return image!
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

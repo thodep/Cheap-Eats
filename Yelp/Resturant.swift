@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreLocation
+import MapKit
 
 class Resturant: NSObject {
    
@@ -17,6 +18,7 @@ class Resturant: NSObject {
     var imageUrl: String = ""
     var address: String = ""
     var categories: String = ""
+    
     
     var location: CLLocationCoordinate2D  = CLLocationCoordinate2D()
     
