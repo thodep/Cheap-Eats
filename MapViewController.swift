@@ -9,8 +9,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     @IBOutlet weak var mapView: MKMapView!
     var locationManager = CLLocationManager()
-    var center: CLLocationCoordinate2D!
-    var annotations: Array<MKPointAnnotation>!
+    
     
    override func  viewDidLoad() {
     super.viewDidLoad()
@@ -29,21 +28,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         mapView.setUserTrackingMode(MKUserTrackingMode.Follow, animated: true)
         
         
-        
-        
     }
-
-
-
-    
-//    func displayLocation(location:CLLocation){
-//        
-//        mapView.setRegion(MKCoordinateRegion(center: CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude), span: MKCoordinateSpanMake(0.05, 0.05)),animated: true)
-//        let locationPinCoord = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-//        let annotation = MKPointAnnotation()
-//        annotation.coordinate = locationPinCoord
-//        mapView.addAnnotation(annotation)
-//        mapView.showAnnotations( [annotation], animated: true) }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

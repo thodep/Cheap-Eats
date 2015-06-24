@@ -11,57 +11,41 @@ class ListTableViewController: UITableViewController,UITableViewDataSource,UITab
     var resturants: [Resturant]?
     var restaurantName:String = ""
     
-    func seachForRestaurants() {
-        var parameters = [
-            // "ll": "43.64286195,-79.4576777",
-            
-          
-            "location": "Toronto",
-            "radius_filter":"10000",
-            "cc": "CA",
-            "term":"cheap_eats",
-            
-        ]
-        
-        var yelpClient = YelpClient(consumerKey: kConsumerKey, consumerSecret: kConsumerSecret, accessToken: kToken, accessSecret: kTokenSecret)
-        
-        yelpClient.searchWithTerm("", parameters: parameters, offset: 0, limit: 20, success: { (results: [Resturant]?) -> Void in
-            if let rests = results {
-                self.resturants = rests
-                self.tableView.reloadData()
-                
-            }
-            })
-            { (operation: AFHTTPRequestOperation!,error: NSError!) -> Void in
-            
-        }
-    }
+    var numberOfRestaurantsOffset:Int = 0 //the starting point for restaurants retrived in search starting zero
+    var maxNumberOfSearchedRestaurants:Int = 20
     
-
-  
-
+    //What we want to do when we get to the bottom of the list is RELOAD the data and then increase the variable numberOfRestaurantsOffset with maxNumberOfSearchedRestaurants soooooooo something like
+    //numberOfRestaurantsOffset + = maxNumberOfSearchedRestaurants
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-        seachForRestaurants()
+        
+        seachForRestaurants(shouldReload: true, offsetValue: self.numberOfRestaurantsOffset )
+        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         tableView.delegate = self
         tableView.dataSource = self
         
+    tableView.addInfiniteScrollingWithActionHandler { () -> Void in
+           //return resturants?.count\
+//            println("load my data" )
+        self.tableView.infiniteScrollingView.stopAnimating()
+         self.seachForRestaurants(shouldReload: false, offsetValue: self.resturants!.count )
+        }
     }
+
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
+    
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
+       
         if let rests = self.resturants {
             return count(rests)
         }
@@ -75,11 +59,8 @@ class ListTableViewController: UITableViewController,UITableViewDataSource,UITab
             // access data from DetailViewController
             let selectedRow = self.tableView.indexPathForSelectedRow()?.row
             if let rests = self.resturants {
-                detailView.restaurantLabel = rests[selectedRow!].name
-                detailView.restaurantAddressString = rests[selectedRow!].address
-                detailView.urlDataObject = rests[selectedRow!].imageUrl
-                detailView.urlRatingImage = rests[selectedRow!].ratingImageUrl
-                detailView.restaurantCategoriesDetail = rests[selectedRow!].categories
+
+                detailView.resturant = rests[selectedRow!]
           }
         }
     }
@@ -101,13 +82,14 @@ class ListTableViewController: UITableViewController,UITableViewDataSource,UITab
             let rest = rests[indexPath.row];
             print(rest)
             
-            cell.restaurantName.text = rest.name
+            cell.restaurantName.text = "\(indexPath.row + 1). \(rest.name)"//rest.name
+            
             cell.restaurantAddress.text = rest.address
             cell.restaurantCategory.text = rest.categories
             
+            
             cell.restaurantImage.sd_setImageWithURL(NSURL(string: rest.imageUrl))
             cell.restaurantRatingImage.sd_setImageWithURL(NSURL(string: rest.ratingImageUrl))
-            
             
             
         }
@@ -116,7 +98,39 @@ class ListTableViewController: UITableViewController,UITableViewDataSource,UITab
         return cell
     }
     
-
+    func seachForRestaurants(shouldReload:Bool = true, offsetValue:Int ) {
+        var parameters = [
+            
+            "location": "Toronto",
+            "radius_filter":"10000",
+            "cc": "CA",
+            "term":"cheap_eats",
+            
+        ]
+        
+        var yelpClient = YelpClient(consumerKey: kConsumerKey, consumerSecret: kConsumerSecret, accessToken: kToken, accessSecret: kTokenSecret)
+        
+        yelpClient.searchWithTerm("", parameters: parameters, offset: offsetValue, limit: 20, success: { (results: [Resturant]?) -> Void in
+           
+            if let rests = results {
+                
+                if shouldReload{
+                    self.resturants = rests
+                }else {
+                    if let originalRests = self.resturants {
+                        var newRests = originalRests + rests
+                        self.resturants = newRests
+                    }
+                }
+             
+                self.tableView.reloadData()
+                
+            }
+            })
+            { (operation: AFHTTPRequestOperation!,error: NSError!) -> Void in
+                println("failed")
+        }
+    }
     
     
 }

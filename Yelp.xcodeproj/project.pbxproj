@@ -14,6 +14,7 @@
 		222D8A6519CCF9F900D2DB53 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 222D8A6319CCF9F900D2DB53 /* LaunchScreen.xib */; };
 		222D8A7119CCF9F900D2DB53 /* YelpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D8A7019CCF9F900D2DB53 /* YelpTests.swift */; };
 		222D8A7D19CCFAE000D2DB53 /* YelpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D8A7C19CCFAE000D2DB53 /* YelpClient.swift */; };
+		D18313481B3A0FD70092BA05 /* Resturant.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18637231B3344E400C551CB /* Resturant.swift */; };
 		D18637241B3344E400C551CB /* Resturant.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18637231B3344E400C551CB /* Resturant.swift */; };
 		D1D099991B2F1DB300052E93 /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D099981B2F1DB300052E93 /* ListTableViewController.swift */; };
 		D1D0999D1B2F24DC00052E93 /* RestaurantListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D0999C1B2F24DC00052E93 /* RestaurantListTableViewCell.swift */; };
@@ -348,6 +349,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D18313481B3A0FD70092BA05 /* Resturant.swift in Sources */,
 				222D8A7119CCF9F900D2DB53 /* YelpTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -2,6 +2,7 @@
 
 // Create usercoordinates CLLLocation 
 
+import CoreLocation
 
 class YelpClient: BDBOAuth1RequestOperationManager {
 
@@ -24,10 +25,10 @@ class YelpClient: BDBOAuth1RequestOperationManager {
     
     func searchWithTerm(term: String,
                     parameters: Dictionary<String, String>? = nil,
-                    offset: Int = 0,
+                    offset:Int,
                     limit: Int = 20,
                     success: ([Resturant]?) -> Void,
-                    failure: (AFHTTPRequestOperation!, NSError!) -> Void) -> AFHTTPRequestOperation! {
+        failure: (AFHTTPRequestOperation!, error:NSError!) -> Void) -> AFHTTPRequestOperation! {
         
                         var params: NSMutableDictionary = [
                             "term": term,
@@ -73,6 +74,20 @@ class YelpClient: BDBOAuth1RequestOperationManager {
                                             resturant.phoneNumber = resPhone
                                             
                                         }
+                                        
+                                   
+                                        // to get store latitute/ longtitude
+                                        if let location = dict["location"] as? Dictionary<String, AnyObject>,
+                                         let coordinate = location["coordinate"] as? Dictionary<String, Double> {
+                                      
+                                            let lat = coordinate["latitude"]
+                                            let long = coordinate["longitude"]
+                                            resturant.coordinate = CLLocationCoordinate2DMake(lat!, long!)
+                                            
+                                            }
+                                        
+                                     
+                                        
                                         resultArray.append(resturant)
                                     }
                                     success(resultArray)
