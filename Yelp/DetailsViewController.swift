@@ -33,6 +33,7 @@ class DetailsViewController: UIViewController, MKMapViewDelegate {
     var userLocation:CLLocationCoordinate2D?
     override func viewDidLoad() {
         super.viewDidLoad()
+        mapView.showsUserLocation = true
 
         // Do any additional setup after loading the view.
         // Set Direction Button shape and color
@@ -134,21 +135,17 @@ class DetailsViewController: UIViewController, MKMapViewDelegate {
     
 
     func showRoute(response: MKDirectionsResponse) {
-        
         for route in response.routes as! [MKRoute] {
-            
             mapView.addOverlay(route.polyline,
                 level: MKOverlayLevel.AboveRoads)
-            
             for step in route.steps {
                 println(step.instructions)
             }
         }
-        let userLocation = mapView.userLocation
-        let region = MKCoordinateRegionMakeWithDistance( userLocation.location.coordinate, 2000, 2000)
-        
-        mapView.setRegion(region, animated: true)
-        mapView.showsUserLocation = true
+        if let userLocation = mapView.userLocation, loc = userLocation.location {
+            let region = MKCoordinateRegionMakeWithDistance( loc.coordinate, 2000, 2000)
+            mapView.setRegion(region, animated: true)
+        }
         
     }
     
@@ -164,7 +161,9 @@ class DetailsViewController: UIViewController, MKMapViewDelegate {
     @IBAction func callRestaurant(sender: UIButton) {
         
         println(resturant?.phoneNumber)
-       
+        if let url = NSURL(string: "tel://\(resturant?.phoneNumber)") {
+            UIApplication.sharedApplication().openURL(url)
+        }
         
     }
 }
