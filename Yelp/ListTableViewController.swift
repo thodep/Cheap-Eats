@@ -14,10 +14,19 @@ class ListTableViewController: UITableViewController,UITableViewDataSource,UITab
     var numberOfRestaurantsOffset:Int = 0 //the starting point for restaurants retrived in search starting zero
     var maxNumberOfSearchedRestaurants:Int = 20
     
+    var mapViewController: MapViewController!
+    
+    func didPressMapView(){
+        self.navigationController?.pushViewController(self.mapViewController, animated: true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.mapViewController = MapViewController()
+        
+        // set action then set target to the Map Bar Button
+        self.navigationItem.rightBarButtonItem?.action = Selector("didPressMapView")
+        self.navigationItem.rightBarButtonItem?.target = self
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -28,9 +37,9 @@ class ListTableViewController: UITableViewController,UITableViewDataSource,UITab
         tableView.delegate = self
         tableView.dataSource = self
         
-    tableView.addInfiniteScrollingWithActionHandler { () -> Void in
+        tableView.addInfiniteScrollingWithActionHandler { () -> Void in
    
-        self.tableView.infiniteScrollingView.stopAnimating()
+         self.tableView.infiniteScrollingView.stopAnimating()
          self.seachForRestaurants(shouldReload: false, offsetValue: self.resturants!.count )
         }
     }
@@ -116,13 +125,15 @@ class ListTableViewController: UITableViewController,UITableViewDataSource,UITab
                 
                 if shouldReload{
                     self.resturants = rests
+                    self.mapViewController.resturants = rests
                 }else {
                     if let originalRests = self.resturants {
                         var newRests = originalRests + rests
                         self.resturants = newRests
+                        self.mapViewController.resturants = newRests
                     }
                 }
-             
+                
                 self.tableView.reloadData()
                 
             }
