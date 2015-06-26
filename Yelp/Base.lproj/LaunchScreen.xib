@@ -10,17 +10,17 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="TORONTO CHEAP EATS " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fMD-bO-9jx">
-                    <rect key="frame" x="91" y="161" width="350" height="50"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TORONTO CHEAP EATS " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fMD-bO-9jx">
+                    <rect key="frame" x="79" y="360" width="256" height="23"/>
                     <fontDescription key="fontDescription" name="STHeitiTC-Medium" family="Heiti TC" pointSize="23"/>
                     <color key="textColor" red="0.96078437569999997" green="0.61960786580000005" blue="0.15686275059999999" alpha="1" colorSpace="deviceRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="et-line_e048(0)_128" translatesAutoresizingMaskIntoConstraints="NO" id="lzv-nh-uBO">
-                    <rect key="frame" x="143" y="25" width="128" height="128"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="et-line_e048(0)_128" translatesAutoresizingMaskIntoConstraints="NO" id="lzv-nh-uBO">
+                    <rect key="frame" x="143" y="224" width="128" height="128"/>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="The most fulliling eating experience " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H3T-Oz-35t">
-                    <rect key="frame" x="71" y="229" width="380" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The most fulliling eating experience " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H3T-Oz-35t">
+                    <rect key="frame" x="53" y="406" width="308.5" height="18"/>
                     <fontDescription key="fontDescription" name="STHeitiTC-Light" family="Heiti TC" pointSize="18"/>
                     <color key="textColor" red="0.83399157010000002" green="0.44409522670000001" blue="0.1161309093" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -28,7 +28,12 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="centerY" secondItem="fMD-bO-9jx" secondAttribute="centerY" constant="54" id="iQg-Hj-Oi0"/>
+                <constraint firstAttribute="centerX" secondItem="fMD-bO-9jx" secondAttribute="centerX" id="6Jh-2a-X0V"/>
+                <constraint firstAttribute="centerX" secondItem="H3T-Oz-35t" secondAttribute="centerX" constant="-0.5" id="Rci-Rr-6dv"/>
+                <constraint firstItem="H3T-Oz-35t" firstAttribute="top" secondItem="fMD-bO-9jx" secondAttribute="bottom" constant="23" id="Xpm-F5-srq"/>
+                <constraint firstAttribute="centerY" secondItem="lzv-nh-uBO" secondAttribute="centerY" constant="80" id="gzx-s2-Tfh"/>
+                <constraint firstAttribute="centerX" secondItem="lzv-nh-uBO" secondAttribute="centerX" id="nvD-b9-bye"/>
+                <constraint firstItem="fMD-bO-9jx" firstAttribute="top" secondItem="lzv-nh-uBO" secondAttribute="bottom" constant="8" id="oNk-Vc-AGY"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>

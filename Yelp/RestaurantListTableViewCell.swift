@@ -18,5 +18,10 @@ class RestaurantListTableViewCell: UITableViewCell {
     @IBOutlet weak var restaurantCategory: UILabel!
  
     @IBOutlet weak var restaurantDistance: UILabel!
+    
+    
+//    override func awakeFromNib() {
+//        restaurantImage.layer.cornerRadius = 10.0
+//    }
 
 }

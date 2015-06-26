@@ -18,10 +18,10 @@ class Resturant: NSObject, MKAnnotation {
     
     
    // var ratingNumber : String = ""
-    var fullAdress : String = ""
+   // var fullAdress : String = ""
     
     
-//    var location: CLLocationCoordinate2D  = CLLocationCoordinate2D()
+   var location: CLLocationCoordinate2D  = CLLocationCoordinate2D()
     
     override init(){
         super.init()

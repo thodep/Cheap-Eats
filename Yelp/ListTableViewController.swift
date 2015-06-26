@@ -14,9 +14,6 @@ class ListTableViewController: UITableViewController,UITableViewDataSource,UITab
     var numberOfRestaurantsOffset:Int = 0 //the starting point for restaurants retrived in search starting zero
     var maxNumberOfSearchedRestaurants:Int = 20
     
-    //What we want to do when we get to the bottom of the list is RELOAD the data and then increase the variable numberOfRestaurantsOffset with maxNumberOfSearchedRestaurants soooooooo something like
-    //numberOfRestaurantsOffset + = maxNumberOfSearchedRestaurants
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,8 +29,7 @@ class ListTableViewController: UITableViewController,UITableViewDataSource,UITab
         tableView.dataSource = self
         
     tableView.addInfiniteScrollingWithActionHandler { () -> Void in
-           //return resturants?.count\
-//            println("load my data" )
+   
         self.tableView.infiniteScrollingView.stopAnimating()
          self.seachForRestaurants(shouldReload: false, offsetValue: self.resturants!.count )
         }
@@ -66,15 +62,15 @@ class ListTableViewController: UITableViewController,UITableViewDataSource,UITab
     }
 
     // animation for cell
-//    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-//       
-//       let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, -500, 10, 0)
-//       cell.layer.transform = rotationTransform
-//        UIView.animateWithDuration(0.8, animations: { () -> Void in
-//          cell.layer.transform = CATransform3DIdentity
-//            
-//    })
-//  }
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    
+      let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, -500, 10, 0)
+       cell.layer.transform = rotationTransform
+        UIView.animateWithDuration(1.5, animations: { () -> Void in
+          cell.layer.transform = CATransform3DIdentity
+    
+  })
+ }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! RestaurantListTableViewCell
@@ -82,14 +78,18 @@ class ListTableViewController: UITableViewController,UITableViewDataSource,UITab
             let rest = rests[indexPath.row];
             print(rest)
             
-            cell.restaurantName.text = "\(indexPath.row + 1). \(rest.name)"//rest.name
+            cell.restaurantName.text = "\(indexPath.row + 1). \(rest.name)"
             
-            cell.restaurantAddress.text = rest.address
+           // cell.restaurantAddress.text = rest.address
             cell.restaurantCategory.text = rest.categories
             
             
             cell.restaurantImage.sd_setImageWithURL(NSURL(string: rest.imageUrl))
             cell.restaurantRatingImage.sd_setImageWithURL(NSURL(string: rest.ratingImageUrl))
+            
+            cell.restaurantImage.layer.cornerRadius = 5
+            cell.restaurantImage.layer.masksToBounds = true
+            
             
             
         }
